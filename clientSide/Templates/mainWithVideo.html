@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Project 2020-21</title>
+    <link rel="stylesheet" type="text/css" href="cssFiles/mainWithVideoStyles.css">
+</head>
+<body>
+    <div class="side_bar">
+        <div>
+            <a href="/home">
+                Home
+            </a>
+        </div>
+        <div>
+            <a href="/about">
+                About
+            </a>
+        </div>
+        <div>
+            <a href="/settings">
+                Settings
+            </a>
+        </div>
+    </div>
+    <div class="main_page">
+        <h1 class="h1Title">
+            Main Controls
+        </h1>
+        <canvas id="canvas" width="600" height="400">
+            <button class="button_down">Down</button>
+        </canvas>
+        <canvas id="canvas_img" width="800" height="400"></canvas>
+        <script src="jsFiles/canvasbuilder.js">
+        create_whole_arm();
+        </script>
+        <form>
+            <p class="info_paragraph">These are the main commands.
+                Click on any of the parts of the robotic arm
+                to select more precicely what you want to move.
+            </p>
+            <p class="which_arm">Current Arm Selected: {{ armnum }}</p>
+            <button class="button_up">Up</button>
+            <div class="special_commands">
+                <img src="Images\specialcommandsicon-removebg-preview (1).png">
+                <div class="command">Do a 360?</div>
+                <button class="commandbutton360">Do it!</button>
+                <div class="command">Throw the object?</div>
+                <button class="commandbuttonthrow">Throw it!</button>
+                <div class="command">A small dance?</div>
+                <button class="commandbuttondance">Let's go!</button>
+            </div>
+            <br>
+            <button class="button_left">Left</button>
+            <button class="button_down">Down</button>
+            <button class="button_right">Right</button>
+            <div class="allobjects">
+                <h3>Detected Objects</h3>
+                {% for object in objects %}
+                    <li class="objects_class">{{ object }}</li>
+                {% endfor %}
+                {% for angle in angles %}
+                    <li class="angles_class">{{ angles }}</li>
+                {% endfor %}
+                <h3>Reachable Objects</h3>
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>
