@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Project 2020-21 - Controles Page</title>
+    <style>
+.side-bar-container{
+    top:0;
+    left:0;
+    height: 100%;
+    width: 12%;
+    background-color: rgb(59, 61, 87);
+    position: fixed;
+    overflow-x:hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.side-bar-container div{
+    text-align: center;
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.side-bar-container div:hover{
+    background-color: rgb(78, 109, 130);
+    display: block;
+}
+
+.side-bar-container div a{
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+}
+
+.side-bar-container p{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(0,0,0);
+    font-size: 35px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 15px;
+}
+
+.side-bar-container p img{
+    width: 32px;
+    height: 32px;
+}
+
+.side-bar-container button a{
+    color: white;
+    top: 800px;
+    left:0;
+    text-align: center;
+    padding-left: 5px;
+}
+.side-bar-container button a:hover{
+    background-color: grey
+}
+
+.side-bar-container button a img{
+    text-align: center;
+    padding-right: 10px;
+    width: 35px;
+    padding-up:5px;
+    height: 35px;
+}
+
+.main_page{
+  margin-left:250px;
+  padding:0px, 10 px;
+}
+
+.main_page h1{
+  background-color: rgb(67, 119, 153);
+  color: ;
+  text-align: center;
+  padding-left: 35%;
+  padding-right: 50%;
+}
+
+.canvas_img{
+border-width: 2px;
+  align-content: center;
+  margin-left: 100px;
+  border-radius: 15px 15px 0 0;
+}
+
+.insideCanvas {
+
+}
+
+.insideCanvas button{
+}
+
+.button_up {
+  margin-left:235px;
+  margin-top: 30px;
+  padding: 40px 50px 40px 47px;
+
+}
+.button_down {
+  padding: 40px 40px 40px 40px;
+
+}
+.button_left {
+  margin-left:125px;
+  padding: 40px 40px 40px 40px;
+
+}
+.button_right {
+  padding: 40px 40px 40px 40px;
+}
+
+.info_paragraph{
+  font-size: 25px;
+  padding: 20px 100px 20px 100px;
+}
+
+.special_commands{
+  float: right;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 10px 30px 10px 10px;
+  width: 250px;
+  margin-right:800px;
+  margin-buttom:50px;
+}
+
+.special_commands:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.special_commands p{
+  padding: 10px 10px 10px 10px;
+}
+
+.special_commands img{
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  width: 140px;
+  height: 140px;
+}
+
+.errorMsgAjax{
+  background-color: rgb(255,204,203);
+  display: none;
+}
+
+.objects_class{
+    float: right;
+}
+</style>
+</head>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<body>
+    <div class="side-bar-container">
+        <p>Content</p>
+        <div class="not-link"><a href="/arduino-conn-esp32"><img src="{{ url_for('static', filename='Images\homeimg-removebg-preview (1).png.png') }}">Controles</a></div>
+        <div><a href="/about"><img src="{{ url_for('static', filename='Images\leaveIcon.png') }}">About</a></div>
+        <div><a href="/settings"><img src="{{ url_for('static', filename='Images\settingsimg-removebg-preview.png.png') }}">Settings</a></div>
+        <p style="background-color: rgb(59, 61, 87); padding-top: 400px;">
+            <button style="background-color: rgb(59, 61, 87);">
+                <img src="{{ url_for('static', filename='Images\leaveIcon.png') }}">
+                Logout
+            </button>
+        </p>
+    </div>
+    <div class="main_page">
+        <h1 class="h1Title">
+            Main Controls
+        </h1>
+        <canvas id="canvas_img" width="1200" height="400">
+            <img src="{{ url_for('static', filename='Images\whenNoVid.png')}}">
+        </canvas>
+        <div class="insideCanvas">
+            <img src="{{ url_for('static', filename='Images\whenNoVid.png.png') }}">
+            <button id="armOne" onclick="toFlaskDataWhichArm = 1;" >Main arm</button>
+            <button id="armTwo" onclick="toFlaskDataWhichArm = 2;">Central arm</button>
+            <button id="armThree" onclick="toFlaskDataWhichArm = 3;">Higher arm</button>
+            <button id="armGrip" onclick=setGrip();>Gripper</button>
+        </div>
+        <div class="stats">
+            <p class="armNumCss"></p>
+        </div>
+        <form method="post">
+            <p class="info_paragraph">
+                These are the main commands.
+                Click on any of the parts of the robotic arm
+                to select more precicely what you want to move.
+            </p>
+            <p class="which_arm">Current Arm Selected: {{ armnum }}</p>
+            <button class="button_up" id="but1" type="button" name="Move_Up" value="Move_Up">Up</button>
+            <div class="special_commands">
+                <img src="{{ url_for('static', filename='Images/specialcommandsicon-removebg-preview (1).png')}}">
+                <div class="command" id="but360">Do a 360?</div>
+                <button class="commandbutton360" name="commandbutton360">Do it!{{ buttonint }}</button>
+                <div class="command" id="butThrow">Throw the object?</div>
+                <button class="commandbuttonthrow">Throw it!</button>
+                <div class="command">A small dance?</div>
+                <button class="commanddance" id="butGo">Let's go!</button>
+            </div>
+            <br>
+            <button class="button_left" id="but2" type="button" name="Move_Left" value="Move_Left">Left</button>
+            <button class="button_down" id="but3" type="button" name="Move_Down" value="Move_Down">Down</button>
+            <button class="button_right" id="but4" type="button" name="Move_Right" value="Move_Right">Right</button>
+            <div id="errorMsgAjax">$Ajax request from flask failed, retrying now. Error appears in the JSONify function.</div>
+            <div class="allobjects">
+                <h3>Detected Objects</h3>
+                {% for object in objects %}
+                    <li class="objects_class">{{ object }}</li>
+                {% endfor %}
+                {% for angle in angles %}
+                    <li class="angles_class">{{ angles }}</li>
+                {% endfor %}
+                <h3>Reachable Objects</h3>
+            </div>
+        </form>
+        <script src="{{ url_for('static', filename='jsFiles/canvasbuilder.js')}}">
+        create_whole_arm();
+        console.log('arm_created');
+        </script>
+        <script src="{{ url_for('static', filename='jsFiles/desplayliveimg.js')}}"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+
+            console.log("Starting program ...");
+
+            var toFlaskDataButton;
+
+            var toFlaskDataWhichArm = 2;
+
+            var toFlaskDataIsClosing;
+
+            var commandName = "None";
+
+            var delayInMilliseconds = 5000;
+
+            var errorAlertAjax = document.getElementById("errorMsgAjax");
+
+            var btnUp = document.getElementById("but1");
+
+            var btnLeft = document.getElementById("but2");
+
+            var btnDown = document.getElementById("but3");
+
+            var btnRight = document.getElementById("but4");
+
+            var btn360 = document.getElementById("but360");
+
+            var btnThrow = document.getElementById("butThrow");
+
+            var btnGo = document.getElementById("butGo");
+
+
+            function postdata() {
+                console.log("Post Data function called:");
+                $.ajax({
+                    data : JSON.stringify({
+                            'button': toFlaskDataButton,
+                            'armNum': toFlaskDataWhichArm,
+                            'isClosingArm': toFlaskDataIsClosing,
+                            'specialCommands': commandName
+                        }),
+                    type : 'POST',
+                    url : '/',
+                    contentType: 'application/json;charset=utf-8'
+                    //error: function(data){
+                    //    errorAlertAjax.display = visibility;
+                    //}
+                })
+                console.log("Post Data function finished:");
+                toFlaskDataButton = "ActionHere";
+            }
+
+            function setGrip() {
+                if(toFlaskDataIsClosing){
+                    toFlaskDataIsClosing = "FalseClosing";
+                } else if (toFlaskDataIsClosing == false) {
+                    toFlaskDataIsClosing = "TrueClosing";
+                }
+            }
+
+            btnUp.addEventListener("mousedown", function(){
+                    event.preventDefault();
+                    toFlaskDataButton = "Move_Up";
+               });
+            btnLeft.addEventListener("mousedown", function(){
+                    event.preventDefault();
+                    toFlaskDataButton = "Move_Left";
+                });
+            btnDown.addEventListener("mousedown", function(){
+                    event.preventDefault();
+                    toFlaskDataButton = "Move_Down";
+                });
+            btnRight.addEventListener("mousedown", function(){
+                    event.preventDefault();
+                    toFlaskDataButton = "Move_Right";
+                });
+            btnUp.addEventListener("mouseup", function(){
+                    event.preventDefault();
+                    toFlaskDataButton = "None";
+               });
+            btnLeft.addEventListener("mouseup", function(){
+                    event.preventDefault();
+                    toFlaskDataButton = "None";
+                });
+            btnDown.addEventListener("mouseup", function(){
+                    event.preventDefault();
+                    toFlaskDataButton = "None";
+                });
+            btnRight.addEventListener("mouseup", function(){
+                    event.preventDefault();
+                    toFlaskDataButton = "None";
+                });
+
+            btn360.addEventListener("click", function(){
+                    commandName = "command360";
+                    postdata();
+                    commandName = "None";
+                });
+            btnThrow.addEventListener("click", function(){
+                    commandName = "commandThrow";
+                    postdata();
+                    commandName = "None";
+                });
+            btnGo.addEventListener("click", function(){
+                    commandName = "commandDance";
+                    postdata();
+                    commandName = "None";
+                });
+
+            setInterval(postdata, 750);
+        </script>
+    </div>
+</body>
+</html>

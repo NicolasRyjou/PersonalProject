@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='mainStyle.css')}}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<style>
+.side-bar-container{
+    top:0;
+    left:0;
+    height: 100%;
+    width: 12%;
+    background-color: rgb(59, 61, 87);
+    position: fixed;
+    overflow-x:hidden;
+}
+
+.side-bar-container div{
+    text-align: center;
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.side-bar-container div:hover{
+    background-color: rgb(78, 109, 130);
+    display: block;
+}
+
+.side-bar-container div a{
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+}
+
+.side-bar-container p{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(0,0,0);
+    font-size: 35px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.leave-btn button a{
+    color: white;
+    text-align: center;
+    padding-left: 5px;
+    position: absolute;
+    left: 100px;
+    top: 150px;
+}
+.side-bar-container button a:hover{
+    background-color: grey
+}
+
+.side-bar-container button a img{
+    text-align: center;
+    padding-right: 10px;
+    width: 35px;
+    padding-up:5px;
+    height: 35px;
+}
+
+.settings_main{
+  margin-left:250px;
+  padding:0px, 10 px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.settings_main{
+  border-radius: 25px;
+  border: 2px light grey;
+  border-width: 4px;
+}
+
+.wifiText {
+  font-size: 25px;
+  padding: 40px;
+}
+.wifiText button{
+
+}
+.linkToArduino{
+  font-size:25px;
+  padding: 40px;
+}
+.videoButton {
+  font-size: 25px;
+  padding: 40px;
+}
+
+.cv2Button {
+  font-size: 25px;
+  padding: 40px;
+}
+</style>
+<body>
+    <div class="side-bar-container">
+        <p>Content</p>
+        <div class="not-link"><a href="/arduino-conn-esp32"><img src="{{ url_for('static', filename='Images\leaveIcon.png') }}">Controles</a></div>
+        <div><a href="/about"><img src="{{ url_for('static', filename='Images\leaveIcon.png') }}">About</a></div>
+        <div><a href="/settings"><img src="{{ url_for('static', filename='Images\leaveIcon.png') }}">Settings</a></div>
+        <p class="leave-btn"><button><img src="{{ url_for('static', filename='Images\leaveIcon.png') }}">Logout</button></p>
+    </div>
+
+    <div class="settings_main">
+        <h1 class="titleSettings">Settings</h1>
+        <div class="wifiText">Do you want to switch to a Wifi connection?
+            Doing so will possibly reduce speed and can cause lag.
+            <label class="switch">
+            <input type="checkbox" id="connectionType">
+            <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="linkToArduino">Currently used sub-url used for connection to arduino: <b style="font-size: 30px;">/ </b><input class="urlInputBox"></div>
+        <div class="videoSettings">
+            <div class="videoButton" id="videoButtonText">
+                Turn video feed on? (Turning <b>off</b>
+                will help with any lag but will cut off visuals)
+                <label class="switch">
+                <input type="checkbox" id="videoButton">
+                <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="cv2Button">
+                Turn on Object and Color detection using cv2?
+                <label class="switch">
+                <input type="checkbox" id="cv2Button">
+                <span class="slider round"></span>
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        videoFeedOnOffBtn = document.getElementById("videoButton");
+
+        var isON = false;
+        var whatConn = "serialConn";
+        var isCv2On;
+        var arduinoUrl;
+
+        function postdata() {
+                $.ajax({
+                    data : JSON.stringify({
+                            'connectionMethod': whatConn,
+                            'imageProcessing': isCv2On,
+                            'arduinoConnUrl': arduinoUrl,
+                            'isDebugMode': isON
+                        }),
+                    type : 'POST',
+                    url : '/',
+                    contentType: 'application/json;charset=utf-8'
+                })
+            }
+
+        videoFeedOnOffBtn.addEventListener("click", function () {
+                if (isON == false){
+                    document.getElementById("videoButtonText").innerHTML = "Turn video feed off?
+                    (Turning <b>off</b> will help with any lag but will cut off visuals)
+                    <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                    </label>";
+                isOn = true;
+                } else if (isON == true){
+                    document.getElementById("videoButtonText").innerHTML = "Turn video feed on?
+                    (This can add an additional lag but it will provide visuals)<label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                    </label>";
+                isOn = false;
+                }
+            });
+
+        connectionType.addEventListener("click", function () {
+                if (whatConn == "serialConn"){
+                    document.getElementById("videoButtonText").innerHTML = Switch connection?
+                    Doing so will possibly reduce speed and can cause lag.
+                    Current connection: Wifi connection
+                    <label class="switch">
+                    <input type="checkbox" id="connectionType">
+                    <span class="slider round"></span>
+                    </label>
+                } else if (isON > 0){
+                    document.getElementById("videoButtonText").innerHTML = Switch connection?
+                    Doing so will possibly reduce speed and can cause lag.
+                    Current connection: Serial connection
+                    <label class="switch">
+                    <input type="checkbox" id="connectionType">
+                    <span class="slider round"></span>
+                    </label>
+                }
+            });
+    </script>
+</body>
+</html>
