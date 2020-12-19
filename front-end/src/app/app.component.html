@@ -1,0 +1,201 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container">
+  <div class="row">
+    <div class="toolbar" role="banner">
+      <img width="40" alt="Angular Logo"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+      <span>Personal Project - Web user interface</span>
+      <div class="spacer"></div>
+      <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular"
+        title="Twitter">
+        <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+          <rect width="400" height="400" fill="none" />
+          <path
+            d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23"
+            fill="#fff" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron">
+        <h3>How to get started:</h3>
+        <p class="lead">This webpage is designed to controle a robotic crane. To move the crane around, just click on
+          the different buttons to see what happens
+          !
+        </p>
+        <hr class="my-4">
+        <p style="text-align: center;">The robotic crane uses an <a
+            href="https://store.arduino.cc/arduino-uno-rev3">Arduino Uno</a> for the main actions and an <a
+            href="https://www.instructables.com/Getting-Started-With-the-ESP8266-ESP-01/">ESP8266-01s</a> for the
+          connection with <strong>this</strong> website!</p>
+        <br>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Launch demo modal
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h2 style="text-align: center;"><strong><u>Main commands</u></strong></h2>
+      <table class="row justify-content-center">
+        <thead>
+          <tr>
+            <th scope="row">
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><br><br><br><br></td>
+          </tr>
+          <tr>
+            <td><label class="btn btn-primary btn-lg">
+                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Turn <strong>{{ armInverseStatus }}</strong>
+                </label>
+            </td>
+            <td><label class="btn btn-primary btn-lg">
+                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Manual Control
+                </label>
+            </td>
+            <td><label class="btn btn-primary btn-lg">
+                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Run Program
+                </label>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><br><br><br><br></td>
+          </tr>
+          <tr style="box-sizing: border-box;">
+            <td></td>
+            <td>
+              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;">Move 2nd Up</button>
+            </td>
+            <td></td>
+          </tr>
+          <tr style="box-sizing: border-box;">
+            <td></td>
+            <td>
+              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;"> Move 1st Up</button>
+            </td>
+            <td></td>
+          </tr>
+          <tr style="box-sizing: border-box;">
+            <td>
+              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;">Left</button>
+            </td>  
+            <td>
+              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;">Toggle</button>
+            </td>  
+            <td>
+              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;">Right</button>
+            </td>  
+          <tr style="box-sizing: border-box;">
+            <td></td>
+            <td>
+              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;">Move 2nd Down</button>
+            </td>
+            <td></td>
+          </tr>
+          <tr style="box-sizing: border-box;">
+            <td></td>
+            <td>
+              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;">Move 1st Down</button>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm">
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h3>Programming Interface</h3>
+        <hr class="my-4">
+        <h5><u>Current program:</u></h5>
+        <ul>
+          <li *ngFor="let command of commands; let i = index">
+            {{i}} {{commands}}
+            <button type="button" class="close" id= "remove{{ i }}"aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr class="my-4">
+
+  <div class="row">
+    <div class="col">
+      <footer class="bg-light text-center text-lg-start">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <form action="">
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-auto mb-4 mb-md-0">
+                <p class="pt-2"><strong>Register to get a detailed explanation of how everything works!</strong></p>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-5 col-12 mb-4 mb-md-0">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="form5Example2" class="form-control" />
+                  <label class="form-label" for="form5Example2">Email address</label>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-auto mb-4 mb-md-0">
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary mb-4">Subscribe</button>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </form>
+          <br>
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            2020-21 Personal Project
+            <a class="text-dark" href="http://nicoryj.com">NicoRyj.com</a>
+          </div>
+        </div>
+        <!-- Grid container -->
+
+      </footer>
+    </div>
+  </div>
