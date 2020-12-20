@@ -143,13 +143,31 @@
         <hr class="my-4">
         <h5><u>Current program:</u></h5>
         <ul>
-          <li *ngFor="let command of commands; let i = index">
-            {{i}} {{commands}}
-            <button type="button" class="close" id= "remove{{ i }}"aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </li>
+          <table>
+            <tr *ngFor="let command of commands | keyvalue; let i = index">
+              <td>
+                {{i}}:
+              </td>
+              <td>
+                {{command.value}}
+              </td>
+              <td>
+                <button type="button" class="close"  id="remove_{{command.key}}" (click)="removeItem(command.key)" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </td>
+            </tr>
+          </table>
         </ul>
+        <br>
+        <div class="card-container">
+          <div class="card card-small" (click)="selection = 'component'" tabindex="0">
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>
+
+            <span>New Program </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -165,7 +183,7 @@
             <div class="row">
               <!--Grid column-->
               <div class="col-auto mb-4 mb-md-0">
-                <p class="pt-2"><strong>Register to get a detailed explanation of how everything works!</strong></p>
+                <p class="pt-2"><strong>Have any questions? Write them here! =></strong></p>
               </div>
               <!--Grid column-->
 
@@ -174,7 +192,7 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input type="email" id="form5Example2" class="form-control" />
-                  <label class="form-label" for="form5Example2">Email address</label>
+                  <label class="form-label" for="form5Example2">Question</label>
                 </div>
               </div>
               <!--Grid column-->
@@ -182,7 +200,7 @@
               <!--Grid column-->
               <div class="col-auto mb-4 mb-md-0">
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary mb-4">Subscribe</button>
+                <button type="submit" class="btn btn-primary mb-4">Send now!</button>
               </div>
               <!--Grid column-->
             </div>
