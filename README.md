@@ -1,2 +1,2 @@
-# Personal Project
-This is the software for the flask website. The website has a database for different functions. It will be hosted on pythonanywhere.com. It be able to handle requests.
+# Personal Project website
+The website is run using flask. the backend is able to handle POST and GET requests. The frontend is writen using Angular. The frontend POSTs commands to the backend.
