@@ -8,11 +8,12 @@
               transform="translate(-147.025 -140.939)" fill="#f5f5f5" />
           </svg>
   <div class="row">
-    <div class="toolbar" role="banner">
+    <div class="toolbar" style="position: fixed; z-index: 999;"role="banner">
       <img width="40" alt="Angular Logo"
         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
       <span>Personal Project - Web user interface</span>
       <div class="spacer"></div>
+      <a class="btn btn-social-icon btn-lg btn-github" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-lg']);"><i class="fa fa-github"></i></a>
       
     </div>
   </div>
@@ -37,7 +38,7 @@
           connection with <strong>this</strong> website!</p>
         <br>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          Launch demo modal
+          List of everything here!
         </button>
         
         <!-- Modal -->
@@ -82,7 +83,7 @@
                 </label>
             </td>
             <td><label class="btn btn-primary btn-lg">
-                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Manual Control
+                  <input type="radio" name="options" id="option1" autocomplete="off" checked (click)="manual()"> Manual Control
                 </label>
             </td>
             <td><label class="btn btn-primary btn-lg">
@@ -97,7 +98,7 @@
           <tr style="box-sizing: border-box;">
             <td></td>
             <td>
-              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;" (click)="newItem(' Move second arm up  ')">Move 2nd Up</button>
+              <button type="button" class="btn btn-secondary btn-lg" style="width: 100%;" (click)="newItem('Move second arm up')">Move 2nd Up</button>
             </td>
             <td></td>
           </tr>
@@ -184,6 +185,21 @@
     </div>
   </div>
   <hr class="my-4">
+  <div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <h4>How to use this:</h4>
+    <br>
+    <p>To turn the crane on/off, press the button "Turn Crane On/Off". When the crane is turned <strong>Off</strong>, the commands you press and the programs you run will still be registred, except they won't be send until you turn the crane back <strong>On</strong>.</p>
+    <br>
+    <p>I know this might be a bit confusing, but the "Toggle" button is actually to either pull or push the spade. The "Move (Number) Up/Down" means that you will more the arm number (number) up/down. To see more clearly what it means, just press and see what does what!</p>
+    <br>
+    <p>The "Manual Control" button is there so that the user, you, can directly send commands to the crane. It is the default mode and it is the easiest to use. </p>
+    <br>
+    <p>The "Programming Mode" is the mode where you can create a short program that you can send to the crane. It will be send every time you press the green button "Execute". Every command in the list will be send by order.</p>
+    <br>
+    <p>To edit a program, either delete what element you want by clicking the Big X or click the button "Edit" to clear everything and restart programming. When in reprogramming mode, the "Edit" button should have switched to "Save". When clicking on "Save", you will save the program and will be able to click on "Execute" to send it!</p>
+    <br>
+    <p>If something is still unclear or not working, just ask or email me!</p>
+  </div>
   <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084"
             height="485.677" viewBox="0 0 2611.084 485.677">
             <path id="Path_39" data-name="Path 39"

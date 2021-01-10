@@ -1,0 +1,180 @@
+{
+  "uuid": "f6a0de09a1a7c0c6abfec9f1b605052a",
+  "path": "Offline/Personal Project 2020-21",
+  "name": "Personal Project 2020-21",
+  "content": "Personal project 2020 2021 pcb and schematics.",
+  "created_at": "2021-01-09 19:49:44",
+  "updated_at": "2021-01-10 22:52:48",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "c4e6470ad068247fe22367b21bd5f85c",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "e2ef34ca72b4472e9a6b8cb1ac2b8678": 1,
+        "7c8a48b20e2343d4a8c3fe10786cd097": 4,
+        "fee3186e847b42ecb0244c6d4d6aaef8": 1,
+        "a690e17cdd88420d87764071e9f13038": 1,
+        "6cf22ef12bc24e84a2aa49c8676948ab": 2,
+        "0fe9405317344ae88055196534ca5ac8": 2,
+        "51f93f850c4c44dc8cd677974fa180cb": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "TERMINAL2",
+          2,
+          "RESISTOR",
+          "U3,U2",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "1e50e145870c4b89a23d41a2e9633c8f",
+            "uuid": "0fe9405317344ae88055196534ca5ac8"
+          }
+        ],
+        [
+          "LED",
+          2,
+          "Q62902-B152",
+          "LED1,LED3",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "3c79e5b1ab8947eba5fc032bad95b7ad",
+            "uuid": "6cf22ef12bc24e84a2aa49c8676948ab"
+          }
+        ],
+        [
+          "SMALL_SERVO",
+          4,
+          "1X03",
+          "M6,M7,M8,M5",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "f07b39d5c6fe4ddf965aba596b907053",
+            "uuid": "7c8a48b20e2343d4a8c3fe10786cd097"
+          }
+        ],
+        [
+          "XT60",
+          1,
+          "XT60",
+          "U4",
+          {
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "puuid": "e8461d920b6c4f4b82b1f8a003b72b21",
+            "uuid": "51f93f850c4c44dc8cd677974fa180cb"
+          }
+        ],
+        [
+          "USB-A",
+          1,
+          "MOLEX_480371000",
+          "X1",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "dfabe73ff23e424a9291c1966764e3a6",
+            "uuid": "a690e17cdd88420d87764071e9f13038"
+          }
+        ],
+        [
+          "LM7805",
+          1,
+          "TO-220-3_L10.0-W4.5-P2.54-L",
+          "U1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C845394",
+            "BOM_Manufacturer": "TF",
+            "BOM_Manufacturer Part": "LM7805",
+            "BOM_LCSC Assembly": "Yes",
+            "puuid": "948e610cffd14df79f04c73832b1409b",
+            "uuid": "e2ef34ca72b4472e9a6b8cb1ac2b8678"
+          }
+        ],
+        [
+          "Arduino_Nano_Header",
+          1,
+          "DIP-30_L43.18-W15.24-ARDUINONANO",
+          "J1",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "0476c63fa99e4a998187e5a274bdf1f1",
+            "uuid": "fee3186e847b42ecb0244c6d4d6aaef8"
+          }
+        ]
+      ],
+      "updateTime": 1610299083,
+      "createTime": 1610218184,
+      "histories": [],
+      "created_at": "2021-01-09 19:49:44",
+      "updated_at": "2021-01-10 18:18:03"
+    },
+    {
+      "uuid": "21523220b9f52bb611611392b5f8c1f8",
+      "puuid": "f6a0de09a1a7c0c6abfec9f1b605052a",
+      "title": "PCB_2021-01-09_20-24-36",
+      "filename": "PCB_2021-01-09_20-24-36.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "3c79e5b1ab8947eba5fc032bad95b7ad": 1,
+        "f07b39d5c6fe4ddf965aba596b907053": 4,
+        "ad4cf9a98ad04c21832cf27a15f0d202": 1,
+        "dfabe73ff23e424a9291c1966764e3a6": 1,
+        "948e610cffd14df79f04c73832b1409b": 1,
+        "0476c63fa99e4a998187e5a274bdf1f1": 1
+      },
+      "BOM": [],
+      "updateTime": 1610220276,
+      "createTime": 1610220276,
+      "histories": [],
+      "created_at": "2021-01-09 20:24:36",
+      "updated_at": "2021-01-09 20:24:36"
+    },
+    {
+      "uuid": "cef0973ed01b9cc310bae9591e707b70",
+      "puuid": "f6a0de09a1a7c0c6abfec9f1b605052a",
+      "title": "PCB_2021-01-09_22-35-28",
+      "filename": "PCB_2021-01-09_22-35-28.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "e8461d920b6c4f4b82b1f8a003b72b21": 1,
+        "3c79e5b1ab8947eba5fc032bad95b7ad": 2,
+        "f07b39d5c6fe4ddf965aba596b907053": 4,
+        "dfabe73ff23e424a9291c1966764e3a6": 1,
+        "948e610cffd14df79f04c73832b1409b": 1,
+        "0476c63fa99e4a998187e5a274bdf1f1": 1,
+        "1e50e145870c4b89a23d41a2e9633c8f": 2
+      },
+      "BOM": [],
+      "updateTime": 1610315568,
+      "createTime": 1610228128,
+      "histories": [],
+      "created_at": "2021-01-09 22:35:28",
+      "updated_at": "2021-01-10 22:52:48"
+    }
+  ],
+  "sort": [],
+  "title": "Personal Project 2020-21",
+  "foldername": "Personal Project 2020-21",
+  "schfilename": "Personal Project 2020-21.json",
+  "schfilemtime": 1610299084038
+}

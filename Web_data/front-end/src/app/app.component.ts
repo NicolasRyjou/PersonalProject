@@ -15,7 +15,7 @@ export class AppComponent {
   isArmOn = true;
   isRewritingProgram = false;
   isSpadeToggled = false;
-  programButtonText = 'Edit';
+  programButtonText = 'New';
 
   commands: Map<number, string> = new Map();
   
@@ -25,25 +25,35 @@ export class AppComponent {
    }
 
   jsonify(map){
-    let jsonObject = {};  
-    let listtt = [];
-    map.forEach((value) => {  
-      listtt.push(value);
-    });  
-    return JSON.stringify(listtt);
-  }
+    if ( this.isArmOn ){
+      let jsonObject = {};  
+      let listtt = [];
+      if (map.length > 1){
+          listtt.push(map);
+      } else {
+          map.forEach((value) => {  
+            listtt.push(value);
+          });  
+        }
+        return JSON.stringify(listtt);
+      }
+    }
   sendJsonDoc(){
-    return this.service.postCommands(this.jsonify(this.commands));
+    if ( this.isArmOn ){
+      return this.service.postCommands(this.jsonify(this.commands));
+    }
   }
 
   switchOnOff(){
     if( this.isArmOn ) {
 
       this.isArmOn = false;
+      this.armInverseStatus = "On";
 
     } else {
 
       this.isArmOn = true;
+      this.armInverseStatus = "Off";
 
     }
   }
@@ -65,7 +75,7 @@ export class AppComponent {
     }
     if( this.isProgrammingMode == false ){
 
-      this.postCommands(temp);
+      this.postCommands(this.jsonify(temp));
       
     } else if( this.isProgrammingMode == true && this.isRewritingProgram == true){
 
@@ -88,10 +98,15 @@ export class AppComponent {
     this.lenOfCommands = length;
   }
 
+  manual(){
+    this.isProgrammingMode == false;
+    this.isRewritingProgram == false;
+  }
+
   newItem(data: string){
     if( this.isProgrammingMode == false && this.isRewritingProgram == false ){
 
-      this.postCommands(data);
+      this.postCommands(this.jsonify(data));
       
     } else if( this.isProgrammingMode == true && this.isRewritingProgram == true){
 
@@ -126,7 +141,7 @@ export class AppComponent {
       if( this.isRewritingProgram == true ){
 
         this.isRewritingProgram = false;
-        this.programButtonText = 'Edit';
+        this.programButtonText = 'Delete';
 
       } else if( this.isRewritingProgram == false ){
 
