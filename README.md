@@ -6,7 +6,7 @@ The website's back-end is writen in python. I am using the flask library. The ba
 The website's front-end is writen using the Angular Framerwork. It send the appropriate data to the back-end.
 
 # The Robotic Arm
-I first made a robotic arm but later decided to switch to another model made by eezyrobots.com. The model's name is EEzybotArm V2. (Files for arm 1 in the "CRANE V1" directory, Files for arm 2 in the "CRANE 2" directory)
+I first made a robotic arm but later decided to switch to another model made by eezyrobots.com. The model's name is EEzybotArm V2 (http://www.eezyrobots.it/eba_mk2.html). (Files for arm 1 in the "CRANE V1" directory, Files for arm 2 in the "CRANE 2" directory)
 For the connections to the servo, I made a custom PCB. (Files in the "PCB" directory). This makes my product more of a permanent solution. It is also a neater solution.
 
 # More Later
